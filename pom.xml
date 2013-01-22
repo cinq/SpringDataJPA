@@ -132,6 +132,16 @@
 			<artifactId>spring-data-jpa</artifactId>
 			<version>1.1.0.RELEASE</version>
 		</dependency>
+		<dependency>
+			<groupId>org.apache.derby</groupId>
+			<artifactId>derby</artifactId>
+			<version>10.2.2.0</version>
+		</dependency>
+		<dependency>
+			<groupId>commons-dbcp</groupId>
+			<artifactId>commons-dbcp</artifactId>
+			<version>1.4</version>
+		</dependency>
 	</dependencies>
     <build>
         <plugins>
@@ -173,4 +183,18 @@
     </build>
     <url>http://cinq.com/2013/01/04/spring-data-jpa/</url>
     <description>Reference sample code for using Spring Data JPA with some of the dependencies I have.</description>
+    <dependencyManagement>
+    	<dependencies>
+    		<dependency>
+    			<groupId>org.springframework</groupId>
+    			<artifactId>spring-orm</artifactId>
+    			<version>${org.springframework-version}</version>
+    		</dependency>
+    		<dependency>
+    			<groupId>org.springframework</groupId>
+    			<artifactId>spring-tx</artifactId>
+    			<version>${org.springframework-version}</version>
+    		</dependency>
+    	</dependencies>
+    </dependencyManagement>
 </project>
