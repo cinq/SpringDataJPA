@@ -29,9 +29,17 @@
 	
 	<jpa:repositories base-package="com.cinq.test.repository" />
 	
+	<!-- Spring Data JPA -->
+	<beans:bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
+		<beans:property name="entityManagerFactory" ref="emf" />
+		<beans:property name="jpaDialect">
+			<beans:bean class="org.springframework.orm.jpa.vendor.HibernateJpaDialect" />
+		</beans:property>
+	</beans:bean>
+	
 	<beans:bean id="emf" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
 		<beans:property name="dataSource" ref="myDataSource" />
-		<beans:property name="packagesToScan" value="ca.jerboa.las.domain"/>
+		<beans:property name="packagesToScan" value="com.cinq.test.domain"/>
 		<beans:property name="jpaVendorAdapter">
 		<beans:bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
 			<beans:property name="generateDdl" value="true" />
@@ -45,7 +53,7 @@
     
 	<beans:bean id="myDataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
 		<beans:property name="driverClassName" value="org.apache.derby.jdbc.EmbeddedDriver" />
-		<beans:property name="url" value="jdbc:derby:./derbydb;create=true" />
+		<beans:property name="url" value="jdbc:derby:/opt/derby/SpringDataJpa;create=true" />
 	</beans:bean>
 	
 	

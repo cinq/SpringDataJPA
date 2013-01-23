@@ -13,13 +13,26 @@ List of Events:
 <ol>
 <%
 ArrayList<Event> listEvents = (ArrayList<Event>) pageContext.getAttribute("events");
-for ( Event oneEvent: listEvents) {
-	out.println("<li>" + oneEvent.getTitle() + " - " + oneEvent.getDate() + "</li>");
+if ( listEvents != null ) {
+	for ( Event oneEvent: listEvents) {
+		out.println("<li>" + oneEvent.getTitle() + " - " + oneEvent.getDate() + "</li>");
+	}
+} else {
+	out.println("<li>No events</li>");
 }
 %>
 </ol>
 
 To Add an Event:
+
+<form action="addEvent" method="post">
+<table>
+<tr><td>Title:</td><td><input type="text" size="20" name="title" /></td></tr>
+<tr><td>Description:</td><td><input type="text" name="description" /></td></tr>
+<tr><td>Date:</td><td><input type="date" name="date" /></td></tr>
+<tr><td></td><td><input type="submit" value="Add >" /></td></tr>
+</table>
+</form>
 
 </body>
 </html>
